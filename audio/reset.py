@@ -24,11 +24,12 @@ def reset(in_path, out_path, sample_rate, sample_width, channels, format):
     """
     audio = pydub.AudioSegment.from_file(in_path)
     if sample_rate:
-        audio.set_frame_rate(sample_rate)
+        audio = audio.set_frame_rate(sample_rate)
     if sample_width:
-        audio.set_sample_width(sample_width)
+        audio = audio.set_sample_width(sample_width)
     if channels:
-        audio.set_channels(channels)
+        audio = audio.set_channels(channels)
+
     if format:
         audio.export(out_path, format)
     else:
